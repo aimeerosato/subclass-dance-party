@@ -1,4 +1,5 @@
 // Creates and returns a new dancer object that can step
+// test change
 var makeDancer = function(top, left, timeBetweenSteps){
 
   var dancer = {};
