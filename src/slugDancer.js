@@ -1,6 +1,6 @@
 var makeSlugDancer = function (top, left, timeBetweenSteps) {
   makeDancer.call(this, top, left, timeBetweenSteps);
-  // how do i modify this to do something slightly different?
+  
   this.$node.addClass("slugDancer");
 
 }

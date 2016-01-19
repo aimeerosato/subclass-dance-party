@@ -15,7 +15,7 @@ $(document).ready(function(){
     /* dancerMakerFunctionName is a string which must match
      * one of the dancer maker functions available in global scope.
      * A new object of the given type will be created and added
-     * to the stage.
+     * to the stage. 
      */
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     // get the maker function for the kind of dancer we're supposed to make
@@ -27,7 +27,6 @@ $(document).ready(function(){
       $("body").width() * Math.random(),
       Math.random()*1000
     );
-
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
@@ -44,4 +43,20 @@ $(document).ready(function(){
     $('body').append(dancer.$node);
   });
   
+  $(".addXDancerButton").on("click", function(event){
+    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
+    var dancerMakerFunction =  window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random()*2000
+    );
+    window.dancers.push(dancer);
+    $('body').append(dancer.$node);
+  });
+
+  $(".lineUp").on("click", function(event){
+    window.dancers.forEach(function(e){ e.lineUp(); })
+  });
+
 });
