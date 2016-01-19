@@ -32,4 +32,16 @@ $(document).ready(function(){
     $('body').append(dancer.$node);
   });
 
+  $(".addSlugDancerButton").on("click", function(event){
+    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
+    var dancerMakerFunction =  window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random()*1000
+    );
+    window.dancers.push(dancer);
+    $('body').append(dancer.$node);
+  });
+  
 });
