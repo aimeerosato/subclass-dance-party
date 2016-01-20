@@ -1,6 +1,8 @@
 $(document).ready(function(){
   window.dancers = [];
 
+  // *** Refactor to remove duplication
+
   $(".addDancerButton").on("click", function(event){
     /* This function sets up the click handlers for the create-dancer
      * buttons on dancefloor.html. You should only need to make one small change to it.
@@ -23,36 +25,36 @@ $(document).ready(function(){
     // make a dancer with a random position
     // needed new keyword when instantiating 
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $("#container").height() * Math.random(),
+      $("#container").width() * Math.random(),
       Math.random()*1000
     );
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $("#container").append(dancer.$node);
   });
 
   $(".addSlugDancerButton").on("click", function(event){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     var dancerMakerFunction =  window[dancerMakerFunctionName];
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $("#container").height() * Math.random(),
+      $("#container").width() * Math.random(),
       Math.random()*1000
     );
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $('#container').append(dancer.$node);
   });
   
   $(".addPurpleDancerButton").on("click", function(event){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     var dancerMakerFunction =  window[dancerMakerFunctionName];
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
+      $("#container").height() * Math.random(),
+      $("#container").width() * Math.random(),
       Math.random()*2000
     );
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $('#container').append(dancer.$node);
   });
 
   $(".lineUp").on("click", function(event){
@@ -63,13 +65,16 @@ $(document).ready(function(){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     var dancerMakerFunction =  window[dancerMakerFunctionName];
     var dancer = new dancerMakerFunction(
-      $("body").height() * Math.random(),
-      $("body").width() * Math.random(),
-      Math.random()*2000
+      $("#container").height()-100,
+      $("#container").width()-100,
+      Math.random()*100
     );
-    console.log("running");
     window.dancers.push(dancer);
-    $('body').append(dancer.$node);
+    $("#container").append(dancer.$node);
   });
+
+  // for(var i =0; i<2; i++){
+  //   // $('.addDancerButton').trigger("click");
+  // }
 
 });
