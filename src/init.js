@@ -59,14 +59,15 @@ $(document).ready(function(){
     window.dancers.forEach(function(e){ e.lineUp(); })
   });
 
-    $(".addMovingDancerButton").on("click", function(event){
+  $(".addMovingDancerButton").on("click", function(event){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     var dancerMakerFunction =  window[dancerMakerFunctionName];
     var dancer = new dancerMakerFunction(
       $("body").height() * Math.random(),
       $("body").width() * Math.random(),
-      Math.random()*100
+      Math.random()*2000
     );
+    console.log("running");
     window.dancers.push(dancer);
     $('body').append(dancer.$node);
   });
