@@ -1,12 +1,12 @@
-var X = function(top, left, timeBetweenSteps){
-  makeDancer.call(this, top, left, timeBetweenSteps);
-  this.$node.addClass("xDancer");
+var PurpleGuy = function(top, left, timeBetweenSteps){
+  Dancer.call(this, top, left, timeBetweenSteps);
+  this.$node.addClass("purpleGuy");
 };
-X.prototype = Object.create(makeDancer.prototype);
-X.prototype.constructor = X;
+PurpleGuy.prototype = Object.create(Dancer.prototype);
+PurpleGuy.prototype.constructor = PurpleGuy;
 
-X.prototype.step = function () {
-  makeDancer.prototype.step.call(this);
+PurpleGuy.prototype.step = function () {
+  Dancer.prototype.step.call(this);
   this.$node.toggle()
 };
 

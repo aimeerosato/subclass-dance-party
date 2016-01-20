@@ -43,7 +43,7 @@ $(document).ready(function(){
     $('body').append(dancer.$node);
   });
   
-  $(".addXDancerButton").on("click", function(event){
+  $(".addPurpleDancerButton").on("click", function(event){
     var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
     var dancerMakerFunction =  window[dancerMakerFunctionName];
     var dancer = new dancerMakerFunction(
@@ -57,6 +57,18 @@ $(document).ready(function(){
 
   $(".lineUp").on("click", function(event){
     window.dancers.forEach(function(e){ e.lineUp(); })
+  });
+
+    $(".addMovingDancerButton").on("click", function(event){
+    var dancerMakerFunctionName = $(this).data("dancer-maker-function-name");
+    var dancerMakerFunction =  window[dancerMakerFunctionName];
+    var dancer = new dancerMakerFunction(
+      $("body").height() * Math.random(),
+      $("body").width() * Math.random(),
+      Math.random()*100
+    );
+    window.dancers.push(dancer);
+    $('body').append(dancer.$node);
   });
 
 });

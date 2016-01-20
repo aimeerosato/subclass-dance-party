@@ -1,4 +1,4 @@
-describe("slugDancer", function() {
+describe("SlugDancer", function() {
 
   var slugDancer;
   var timeBetweenSteps = 100;
@@ -6,7 +6,7 @@ describe("slugDancer", function() {
 
   beforeEach(function() {
     clock = sinon.useFakeTimers();
-    slugDancer = new makeSlugDancer(10, 20, timeBetweenSteps);
+    slugDancer = new SlugDancer(10, 20, timeBetweenSteps);
   });
 
   it("should have a jQuery $node object", function(){
@@ -23,7 +23,7 @@ describe("slugDancer", function() {
     it("should call step at least once per second", function(){
       sinon.spy(slugDancer, "step");
       expect(slugDancer.step.callCount).to.be.equal(0);
-      clock.tick(timeBetweenSteps/2); 
+     // clock.tick(timeBetweenSteps); 
       clock.tick(timeBetweenSteps);
 
       expect(slugDancer.step.callCount).to.be.equal(1);

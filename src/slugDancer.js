@@ -1,14 +1,20 @@
-var makeSlugDancer = function (top, left, timeBetweenSteps) {
-  makeDancer.call(this, top, left, timeBetweenSteps);
-  
-  this.$node.addClass("slugDancer");
+var SlugDancer = function (top, left, timeBetweenSteps) {
+  Dancer.call(this, top, left, timeBetweenSteps);
+  var self = this.$node;
+  self.addClass("slugDancer");
 
-}
+  self.mouseover(function(){
+    var color = {
+      border:"10px solid gold"
+    };
+    self.css(color);
+  });      
+};
 
-makeSlugDancer.prototype = Object.create(makeDancer.prototype);
-makeSlugDancer.prototype.constructor = makeSlugDancer;
-makeSlugDancer.prototype.step = function () {
-  makeDancer.prototype.step.call(this);
+SlugDancer.prototype = Object.create(Dancer.prototype);
+SlugDancer.prototype.constructor = SlugDancer;
+SlugDancer.prototype.step = function () {
+  Dancer.prototype.step.call(this);
 
   this.$node.toggle().animate({
       width: "90%"
@@ -18,4 +24,7 @@ makeSlugDancer.prototype.step = function () {
     })
     .animate({ fontSize: "24px" }, 1500 )
     .animate({ borderRightWidth: "15px" }, 1500 );
+
 };
+
+
